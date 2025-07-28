@@ -1,0 +1,12 @@
+side_bar:
+  - heading: "🐙Demo"
+    pages:
+      - name: "Chicago City Crashes"
+        enabled: True
+        config_file_path: "page_configs/full_demo.json"
+      - name: "How was this made?"
+        enabled: True
+        code_definition: "page_modules/how.py"
+      - name: "About StreamLana"
+        enabled: True
+        code_definition: "page_modules/about.py"

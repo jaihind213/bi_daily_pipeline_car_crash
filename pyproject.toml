@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "bi-daily-pipeline-car-crash"
+version = "0.1.0"
+description = "business intelligence for chicago car crashes"
+authors = ["vishnu rao"]
+license = "mit license"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+streamlana = "^0.1.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
