@@ -24,8 +24,8 @@ con = duckdb.connect()
 # Install the iceberg extension
 con.execute("install iceberg; load iceberg;")
 
-setup_blob_store_auth(con, os.environ.get("BLOB_STORE_ACCESS_KEY", "abc"),
-                      os.environ.get("BLOB_STORE_SECRET_KEY", "asd"))
+setup_blob_store_auth(con, os.environ.get("BLOB_STORE_ACCESS_KEY", "please set"),
+                      os.environ.get("BLOB_STORE_SECRET_KEY", "please set"))
 
 # register apache thetha sketch functions with DuckDB
 register_sketches_functions(con)
