@@ -3,6 +3,9 @@ FROM python:3.11-slim
 
 # Set working directory
 WORKDIR /bi
+RUN mkdir -p /bi/page_configs
+RUN mkdir /bi/page_modules
+RUN mkdir /bi/.streamlit
 
 # Install system dependencies (optional, based on your packages)
 RUN apt-get update && apt-get install -y \
@@ -16,12 +19,12 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY *.py .
 COPY side_bar.yaml .
 COPY usr.yaml .
-COPY page_configs .
-COPY page_modules .
-COPY .streamlit .
+COPY page_configs ./page_configs/
+COPY page_modules ./page_modules/
+COPY .streamlit ./streamlit/
 
 # Expose the default Streamlit port
 EXPOSE 8501
 
 # Run the app
-CMD ["streamlit", "run", "no_auth_dashboard.py", "--server.port=8501", "--server.address=0.0.0.0"]
+CMD ["streamlit", "run", "dashboard.py", "--server.port=8501", "--server.address=0.0.0.0"]
