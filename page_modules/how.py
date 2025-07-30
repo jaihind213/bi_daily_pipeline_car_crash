@@ -32,8 +32,8 @@ table_html = """
     <tbody>
 """
 
-for i, (comp, detail) in enumerate(rows):
-    highlight = " style='background-color: yellow;'" if i == len(rows) - 1 else ""
+for _, (comp, detail) in enumerate(rows):
+    highlight = ""
     table_html += f"<tr{highlight}><td>{comp}</td><td>{detail}</td></tr>"
 
 table_html += """

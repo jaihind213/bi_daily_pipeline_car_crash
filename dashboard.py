@@ -39,7 +39,7 @@ def load_dashboard(
 side_bar_util.set_page_layout(layout="wide")
 
 # ⚙️ Log level
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.WARN)
 
 # 👤setup basic auth for demo
 authenticator = util.setup_auth()
