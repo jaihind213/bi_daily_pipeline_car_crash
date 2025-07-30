@@ -41,12 +41,11 @@ side_bar_util.set_page_layout(layout="wide")
 # ⚙️ Log level
 logging.basicConfig(level=logging.WARN)
 
-# 👤setup basic auth for demo
-authenticator = util.setup_auth()
-
 if os.environ.get("AUTH_ENABLED", "false").lower() == "false":
     load_dashboard()
 else:
+    # 👤setup basic auth for demo
+    authenticator = util.setup_auth()
     # 🔐 login page
     fields = {"Form name": welcome_msg}
     authenticator.login(fields=fields, location="main")
