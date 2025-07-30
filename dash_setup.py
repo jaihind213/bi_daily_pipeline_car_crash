@@ -28,7 +28,7 @@ def setup_duck_conn(con, iceberg_table_to_access="crash_cube"):
     register_sketches_functions(con)
     setup_macro_for_table_to_access(
         con,
-        os.environ.get("BLOB_STORE_PATH", "/tmp/iceberg_crashes/db/crashes_cube"),
+        os.environ.get("BLOB_STORE_CUBES_PATH", "/tmp/iceberg_crashes/db/crashes_cube"),
         iceberg_table_name=iceberg_table_to_access,
     )
     con.execute("SET unsafe_enable_version_guessing = true;")
