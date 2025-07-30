@@ -13,7 +13,11 @@ passwd is 'hireme'
 """
 
 
-def load_dashboard(side_bar_yaml_file="side_bar.yaml", table_marcro_name="crash_cube"):
+def load_dashboard(
+    side_bar_yaml_file="side_bar.yaml",
+    table_marcro_name="crash_cube",
+    auth_enabled=False,
+):
     # 🦆
     conn = duckdb.connect()
     dash_setup.setup_duck_conn(conn, iceberg_table_to_access=table_marcro_name)
@@ -21,9 +25,12 @@ def load_dashboard(side_bar_yaml_file="side_bar.yaml", table_marcro_name="crash_
     side_bar_config = side_bar_util.load_side_bar_config_yaml(side_bar_yaml_file)
     # 📊 render dash
     try:
-        side_bar_util.render_side_bar_pages(
-            side_bar_config, conn, check_user_access=util.login_check
-        )
+        if auth_enabled:
+            side_bar_util.render_side_bar_pages(
+                side_bar_config, conn, check_user_access=util.login_check
+            )
+        else:
+            side_bar_util.render_side_bar_pages(side_bar_config, conn)
     finally:
         conn.close()
 
@@ -32,7 +39,7 @@ def load_dashboard(side_bar_yaml_file="side_bar.yaml", table_marcro_name="crash_
 side_bar_util.set_page_layout(layout="wide")
 
 # ⚙️ Log level
-logging.basicConfig(level=logging.WARN)
+logging.basicConfig(level=logging.INFO)
 
 # 👤setup basic auth for demo
 authenticator = util.setup_auth()
@@ -52,7 +59,7 @@ else:
         authenticator.logout(
             "🐙" + user + " Logout", "sidebar", callback=util.logout_callback
         )
-        load_dashboard()
+        load_dashboard(auth_enabled=True)
     elif st.session_state.get("authentication_status") is False:
         st.error("Username/password is incorrect")
     elif st.session_state.get("authentication_status") is None:

@@ -1,44 +1,48 @@
-import pandas as pd
 import streamlit as st
 
-# Hardcoded data
-data = {
-    "Component": [
-        "Cloud",
-        "Infrastructure as Code",
-        "Data Pipeline",
-        "Data Storage",
-        "OLAP Processing",
-        "Query Engine",
-        "Chicago Car Crashes - Business Intelligence Dashboard",
-    ],
-    "Detail": [
-        "Digital Ocean",
-        "Pulumi (Daily setup/teardown)",
-        "Airflow",
-        "🧊Apache Iceberg on blob storage",
-        "⚡Spark on k8s / Apache Thetha Sketches",
-        "🦆Duckdb",
-        "Configuration json files using 🐙StreamLana",
-    ],
-}
-
-# Create DataFrame
-df = pd.DataFrame(data)
-
-
-# Function to highlight the last row
-def highlight_last_row(row):
-    if row.name == len(df) - 1:
-        return ["background-color: yellow"] * len(row)
-    else:
-        return [""] * len(row)
-
-
-# Apply style
-styled_df = df.style.apply(highlight_last_row, axis=1)
-
-# Title and styled table
 st.title("📍 Tech Stack details")
 st.write("How this demo was built?")
-st.dataframe(styled_df)
+
+# Table rows with HTML formatting
+rows = [
+    ["Cloud", "Digital Ocean"],
+    ["Infrastructure as Code", "Pulumi (Daily setup/teardown)"],
+    ["Data Pipeline", "Airflow"],
+    ["Data Storage", "🧊Apache Iceberg on blob storage"],
+    [
+        "OLAP Processing",
+        "⚡Spark on k8s / Apache Thetha Sketches (<a href='https://github.com/jaihind213/daily_pipeline_car_crash' target='_blank'>GitHub</a>)",  # noqa: E501
+    ],
+    ["Query Engine", "🦆Duckdb"],
+    [
+        "Chicago Car Crashes - Business Intelligence Dashboard",
+        "Configuration json files using 🐙StreamLana (<a href='https://github.com/jaihind213/bi_daily_pipeline_car_crash' target='_blank'>GitHub</a>)",  # noqa: E501
+    ],
+]
+
+# Build HTML table
+table_html = """
+<table>
+    <thead>
+        <tr>
+            <th>Component</th>
+            <th>Detail</th>
+        </tr>
+    </thead>
+    <tbody>
+"""
+
+for i, (comp, detail) in enumerate(rows):
+    highlight = " style='background-color: yellow;'" if i == len(rows) - 1 else ""
+    table_html += f"<tr{highlight}><td>{comp}</td><td>{detail}</td></tr>"
+
+table_html += """
+    </tbody>
+</table>
+"""
+
+with st.container():
+    # Render table with hyperlinks
+    st.markdown(table_html, unsafe_allow_html=True)
+
+    st.image("arch.jpg", use_container_width=False, width=800)

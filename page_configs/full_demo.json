@@ -7,7 +7,7 @@
             ],
             "widgets_border": false,
             "with_expander": {
-                "label": "[No Code]The Full Configuration for this entire page...",
+                "label": "This Page(layout+widgets) has been purely built using Configuration...",
                 "expanded": false
             },
             "widgets_gap": "small",

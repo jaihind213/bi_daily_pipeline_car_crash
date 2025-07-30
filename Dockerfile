@@ -19,6 +19,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY *.py .
 COPY side_bar.yaml .
 COPY usr.yaml .
+COPY arch.jpg .
 COPY page_configs ./page_configs/
 COPY page_modules ./page_modules/
 COPY .streamlit ./streamlit/
