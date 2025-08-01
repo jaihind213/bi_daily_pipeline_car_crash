@@ -11,6 +11,7 @@ import util
 welcome_msg = """Chicago 🚕 crash 🏃💥dashboard. Thanks for the visit.
 me @ https://www.linkedin.com/in/213vishnu/
 """
+CREDS_INFO_MSG = "username is in my CV/Resume & password is 'hire-me'"
 
 
 def load_dashboard(
@@ -62,4 +63,4 @@ else:
     elif st.session_state.get("authentication_status") is False:
         st.error("Username/password is incorrect")
     elif st.session_state.get("authentication_status") is None:
-        st.warning("username is my CV/Resume, & password is 'hireMe'")
+        st.warning(CREDS_INFO_MSG)

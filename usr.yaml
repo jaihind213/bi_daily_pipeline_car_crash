@@ -3,11 +3,11 @@ credentials:
     vishnu:
       email: jaihind213sg@gmail.com
       name: vishnu rao
-      password: $2b$12$toBJjgrVfkWgOPVOp2Cl1O7dyaLZ63IILkZgwL30gNR.syEqBazUW
+      password: $2b$12$F.lHEiFLKIce6cwkAwPNte4K3hvZqtgZBdyLmUBrQxYrqTWAZECne
     inspire:
       email: s2@gmail.com
       name: Ianne Roque
-      password: $2b$12$toBJjgrVfkWgOPVOp2Cl1O7dyaLZ63IILkZgwL30gNR.syEqBazUW
+      password: $2b$12$F.lHEiFLKIce6cwkAwPNte4K3hvZqtgZBdyLmUBrQxYrqTWAZECne
 cookie:
   expiry_days: 1
   key: $2b$12$QYlY.8anMS7uCrReX6t5D.0NSwAPuztU3LIUoxdMylaIk2L.P4M6C # Must be string
