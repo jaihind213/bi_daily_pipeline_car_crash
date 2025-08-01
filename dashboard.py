@@ -8,8 +8,8 @@ from streamlana import side_bar_util
 import dash_setup
 import util
 
-welcome_msg = """Chicago 🚕 crash 🏃💥dashboard. You are 1 step closer to Hiring me 😁
-passwd is 'hireme'
+welcome_msg = """Chicago 🚕 crash 🏃💥dashboard. Thanks for the visit.
+me @ https://www.linkedin.com/in/213vishnu/
 """
 
 
@@ -62,4 +62,4 @@ else:
     elif st.session_state.get("authentication_status") is False:
         st.error("Username/password is incorrect")
     elif st.session_state.get("authentication_status") is None:
-        st.warning("Please enter your username and password")
+        st.warning("username is my CV/Resume, & password is 'hireMe'")
